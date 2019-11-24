@@ -19,10 +19,10 @@ app.use(bodyParser.json());
  */
 app.post("/charge", (req, res) => {
     let amount = 5;
-
+	let { email, id } = req.body;
     stripe.customers.create({
-            email: req.body.email,
-            card: req.body.id
+            email: email,
+            card: id
         })
         .then(customer =>
             stripe.charges.create({
